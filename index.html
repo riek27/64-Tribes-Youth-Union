@@ -2,1697 +2,504 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JMD Builders | Building Dreams, One Brick at a Time</title>
-    <meta name="description" content="JMD Builders - Professional construction services in Jebel Suk, Juba, South Sudan. Residential, commercial, infrastructure & renovation experts.">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #1a1a2e;
-            --primary-light: #16213e;
-            --primary-dark: #0f0f1a;
-            --accent: #c8a45a;
-            --accent-hover: #b8933a;
-            --accent-light: #f5e6c8;
-            --white: #ffffff;
-            --off-white: #f8f7f4;
-            --light-gray: #e8e6e1;
-            --gray: #6b6b6b;
-            --text: #333333;
-            --text-light: #666666;
-            --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
-            --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
-            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
-            --transition: all 0.35s ease;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text);
-            background: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        img { max-width: 100%; display: block; }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-
-        /* ========== NAVBAR ========== */
-        .navbar {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            z-index: 1000;
-            padding: 20px 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: var(--transition);
-            background: transparent;
-        }
-
-        .navbar.scrolled {
-            background: rgba(26, 26, 46, 0.98);
-            padding: 14px 5%;
-            box-shadow: var(--shadow-md);
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .nav-logo-icon {
-            width: 48px; height: 48px;
-            background: var(--accent);
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Playfair Display', serif;
-            font-weight: 800; font-size: 18px;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        .nav-logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px; font-weight: 700;
-            color: var(--white);
-            letter-spacing: 0.5px;
-        }
-
-        .nav-logo-text span { color: var(--accent); }
-
-        .nav-links {
-            display: flex; align-items: center; gap: 32px;
-        }
-
-        .nav-links a {
-            color: rgba(255,255,255,0.85);
-            font-size: 15px; font-weight: 500;
-            letter-spacing: 0.3px;
-            transition: color 0.3s;
-            position: relative;
-            padding: 4px 0;
-        }
-
-        .nav-links a::after {
-            content: ''; position: absolute;
-            bottom: 0; left: 0;
-            width: 0; height: 2px;
-            background: var(--accent);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--accent); }
-        .nav-links a:hover::after { width: 100%; }
-
-        .nav-right {
-            display: flex; align-items: center; gap: 24px;
-        }
-
-        .nav-phone {
-            display: flex; align-items: center; gap: 8px;
-            color: var(--white);
-            font-weight: 600; font-size: 14px;
-            transition: color 0.3s;
-            white-space: nowrap;
-        }
-
-        .nav-phone i { color: var(--accent); font-size: 14px; }
-        .nav-phone:hover { color: var(--accent); }
-
-        .nav-quote-btn {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 12px 26px;
-            border: none; border-radius: 8px;
-            font-weight: 700; font-size: 14px;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-transform: uppercase;
-            display: inline-flex; align-items: center; gap: 8px;
-        }
-
-        .nav-quote-btn:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(200, 164, 90, 0.4);
-        }
-
-        .hamburger {
-            display: none; flex-direction: column;
-            gap: 5px; cursor: pointer; z-index: 1001;
-            padding: 4px;
-        }
-
-        .hamburger span {
-            width: 26px; height: 2.5px;
-            background: var(--white);
-            border-radius: 2px; transition: var(--transition);
-        }
-
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-        /* ========== HERO ========== */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex; align-items: center; justify-content: center;
-            padding-top: 80px;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute; inset: 0;
-            background: url('assets/jmd.jpg') center/cover no-repeat;
-            z-index: 0;
-        }
-
-        .hero-bg::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(15,15,26,0.9) 0%, rgba(26,26,46,0.75) 50%, rgba(26,26,46,0.6) 100%);
-        }
-
-        .hero-content {
-            position: relative; z-index: 2;
-            text-align: center;
-            max-width: 950px;
-            padding: 0 24px;
-        }
-
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: rgba(200, 164, 90, 0.15);
-            border: 1px solid rgba(200, 164, 90, 0.3);
-            padding: 10px 24px; border-radius: 50px;
-            margin-bottom: 28px;
-            animation: fadeInDown 0.8s ease;
-        }
-
-        .hero-badge span {
-            color: var(--accent);
-            font-size: 13px; font-weight: 600;
-            letter-spacing: 2px; text-transform: uppercase;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 8vw, 72px);
-            font-weight: 800; color: var(--white);
-            margin-bottom: 20px;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-
-        .hero h1 span { color: var(--accent); }
-
-        .hero-tagline {
-            font-size: clamp(18px, 3vw, 24px);
-            color: var(--accent);
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 400;
-            margin-bottom: 24px;
-            opacity: 0.95;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(16px, 2.5vw, 20px);
-            color: rgba(255,255,255,0.8);
-            line-height: 1.8;
-            margin-bottom: 40px;
-            font-weight: 300;
-            max-width: 700px;
-            margin-left: auto; margin-right: auto;
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-
-        .hero-buttons {
-            display: flex; align-items: center; justify-content: center;
-            gap: 18px; flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.6s both;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 16px 38px;
-            border: none; border-radius: 8px;
-            font-weight: 700; font-size: 14px;
-            letter-spacing: 0.8px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-transform: uppercase;
-            display: inline-flex; align-items: center; gap: 10px;
-            min-width: 180px; justify-content: center;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(200, 164, 90, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            padding: 16px 38px;
-            border: 2px solid rgba(255,255,255,0.4);
-            border-radius: 8px;
-            font-weight: 600; font-size: 14px;
-            letter-spacing: 0.8px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-transform: uppercase;
-            display: inline-flex; align-items: center; gap: 10px;
-            min-width: 180px; justify-content: center;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .hero-scroll {
-            position: absolute; bottom: 30px; left: 50%;
-            transform: translateX(-50%); z-index: 2;
-            display: flex; flex-direction: column; align-items: center;
-            gap: 6px; animation: bounce 2.5s infinite;
-        }
-
-        .hero-scroll span {
-            color: rgba(255,255,255,0.5);
-            font-size: 11px; letter-spacing: 2.5px;
-            text-transform: uppercase;
-        }
-
-        .hero-scroll i {
-            color: var(--accent); font-size: 18px;
-        }
-
-        /* ========== SECTION STYLES ========== */
-        .section { padding: clamp(80px, 12vw, 120px) 5%; }
-        .section-header {
-            text-align: center;
-            max-width: 750px; margin: 0 auto 60px;
-        }
-
-        .section-label {
-            display: inline-flex; align-items: center; gap: 10px;
-            color: var(--accent);
-            font-size: 13px; font-weight: 700;
-            letter-spacing: 3px; text-transform: uppercase;
-            margin-bottom: 14px;
-        }
-
-        .section-label::before, .section-label::after {
-            content: ''; width: 28px; height: 1.5px;
-            background: var(--accent);
-        }
-
-        .section-header h2 {
-            font-size: clamp(32px, 5vw, 46px);
-            font-weight: 700; color: var(--primary);
-            margin-bottom: 18px;
-        }
-
-        .section-header p {
-            font-size: clamp(15px, 2vw, 17px);
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-
-        .section-bg-light { background: var(--off-white); }
-        .section-bg-dark {
-            background: var(--primary);
-            color: var(--white);
-        }
-        .section-bg-dark .section-header h2 { color: var(--white); }
-        .section-bg-dark .section-header p { color: rgba(255,255,255,0.6); }
-
-        /* ========== ABOUT ========== */
-        .about-grid {
-            max-width: 1300px; margin: 0 auto;
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: clamp(40px, 6vw, 70px); align-items: center;
-        }
-
-        .about-images { position: relative; }
-
-        .about-img-main {
-            width: 100%; height: clamp(350px, 50vw, 500px);
-            object-fit: cover; border-radius: 16px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .about-img-small {
-            position: absolute;
-            bottom: -25px; right: -25px;
-            width: clamp(180px, 30vw, 220px);
-            height: clamp(180px, 30vw, 220px);
-            object-fit: cover; border-radius: 16px;
-            border: 6px solid var(--off-white);
-            box-shadow: var(--shadow-md);
-        }
-
-        .about-experience-badge {
-            position: absolute;
-            top: -15px; left: -15px;
-            background: var(--accent);
-            color: var(--primary);
-            padding: 20px; border-radius: 12px;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            min-width: 110px;
-        }
-
-        .about-experience-badge .number {
-            font-family: 'Playfair Display', serif;
-            font-size: 36px; font-weight: 800; line-height: 1;
-        }
-
-        .about-experience-badge .text {
-            font-size: 11px; font-weight: 700;
-            letter-spacing: 1px; text-transform: uppercase;
-            margin-top: 4px;
-        }
-
-        .about-content .section-label { justify-content: flex-start; }
-        .about-content .section-label::before { display: none; }
-
-        .about-content h2 {
-            font-size: clamp(28px, 4.5vw, 40px);
-            font-weight: 700; color: var(--primary);
-            margin-bottom: 22px;
-        }
-
-        .about-content h2 span { color: var(--accent); }
-
-        .about-text {
-            font-size: 16px; color: var(--text-light);
-            line-height: 1.85; margin-bottom: 28px;
-        }
-
-        .about-location {
-            display: flex; align-items: center; gap: 10px;
-            padding: 14px 20px;
-            background: var(--accent-light);
-            border-radius: 10px;
-            margin-bottom: 30px;
-            font-size: 14px; font-weight: 500;
-            color: var(--primary);
-        }
-
-        .about-location i { color: var(--accent); font-size: 16px; }
-
-        .about-features {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 14px; margin-bottom: 35px;
-        }
-
-        .about-feature {
-            display: flex; align-items: center; gap: 12px;
-        }
-
-        .about-feature i {
-            width: 26px; height: 26px;
-            background: var(--accent-light);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--accent); font-size: 11px;
-            flex-shrink: 0;
-        }
-
-        .about-feature span {
-            font-size: 14px; font-weight: 500; color: var(--text);
-        }
-
-        .btn-dark {
-            background: var(--primary);
-            color: var(--white);
-            padding: 15px 34px;
-            border: none; border-radius: 8px;
-            font-weight: 600; font-size: 14px;
-            letter-spacing: 0.8px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-transform: uppercase;
-            display: inline-flex; align-items: center; gap: 10px;
-        }
-
-        .btn-dark:hover {
-            background: var(--primary-light);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-
-        /* ========== SERVICES ========== */
-        .services-grid {
-            max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 26px;
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: 16px;
-            padding: clamp(30px, 5vw, 42px) clamp(24px, 4vw, 32px);
-            border: 1px solid var(--light-gray);
-            transition: var(--transition);
-            position: relative; overflow: hidden;
-            display: flex; flex-direction: column;
-        }
-
-        .service-card::before {
-            content: ''; position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background: var(--accent);
-            transform: scaleX(0); transition: transform 0.4s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: transparent;
-        }
-
-        .service-card:hover::before { transform: scaleX(1); }
-
-        .service-icon {
-            width: 68px; height: 68px;
-            background: linear-gradient(135deg, var(--accent-light), rgba(200,164,90,0.15));
-            border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 22px;
-            transition: var(--transition);
-            flex-shrink: 0;
-        }
-
-        .service-icon i {
-            font-size: 26px; color: var(--accent);
-            transition: var(--transition);
-        }
-
-        .service-card:hover .service-icon {
-            background: var(--accent);
-        }
-
-        .service-card:hover .service-icon i { color: var(--primary); }
-
-        .service-card h3 {
-            font-size: 20px; font-weight: 700;
-            color: var(--primary); margin-bottom: 12px;
-        }
-
-        .service-card p {
-            font-size: 15px; color: var(--text-light);
-            line-height: 1.75; margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .service-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600; font-size: 14px;
-            letter-spacing: 0.5px;
-            display: inline-flex; align-items: center; gap: 8px;
-            transition: gap 0.3s;
-            text-transform: uppercase;
-            margin-top: auto;
-        }
-
-        .service-link:hover { gap: 14px; }
-
-        /* ========== MISSION & COMMITMENT ========== */
-        .mission-grid {
-            max-width: 1200px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
-        }
-
-        .mission-card {
-            background: var(--white);
-            border-radius: 16px;
-            padding: clamp(35px, 6vw, 50px) clamp(28px, 5vw, 40px);
-            box-shadow: var(--shadow-sm);
-            border-left: 4px solid var(--accent);
-            transition: var(--transition);
-        }
-
-        .mission-card:hover {
-            transform: translateX(5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .mission-card h3 {
-            font-size: 24px; font-weight: 700;
-            color: var(--primary); margin-bottom: 16px;
-            display: flex; align-items: center; gap: 12px;
-        }
-
-        .mission-card h3 i {
-            color: var(--accent); font-size: 22px;
-        }
-
-        .mission-card p {
-            font-size: 16px; color: var(--text-light);
-            line-height: 1.8;
-        }
-
-        .mission-list {
-            margin-top: 18px;
-            display: flex; flex-direction: column; gap: 10px;
-        }
-
-        .mission-list li {
-            display: flex; align-items: flex-start; gap: 10px;
-            font-size: 15px; color: var(--text-light);
-        }
-
-        .mission-list li i {
-            color: var(--accent); font-size: 14px;
-            margin-top: 4px; flex-shrink: 0;
-        }
-
-        /* ========== WHY CHOOSE US ========== */
-        .why-us-grid {
-            max-width: 1300px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 24px;
-        }
-
-        .why-card {
-            text-align: center;
-            padding: clamp(35px, 6vw, 48px) clamp(24px, 4vw, 32px);
-            background: var(--white);
-            border-radius: 16px;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .why-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .why-icon {
-            width: 76px; height: 76px;
-            margin: 0 auto 22px;
-            background: linear-gradient(135deg, var(--accent-light), rgba(200,164,90,0.2));
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        .why-icon i {
-            font-size: 30px; color: var(--accent);
-        }
-
-        .why-card h3 {
-            font-size: 19px; font-weight: 700;
-            color: var(--primary); margin-bottom: 12px;
-        }
-
-        .why-card p {
-            font-size: 15px; color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        /* ========== PROJECTS ========== */
-        .projects-grid {
-            max-width: 1400px; margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .project-card {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            cursor: pointer;
-            aspect-ratio: 4/3;
-            background: var(--light-gray);
-        }
-
-        .project-img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s ease;
-        }
-
-        .project-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(15,15,26,0.92) 0%, rgba(15,15,26,0.3) 40%, transparent 100%);
-            display: flex; flex-direction: column; justify-content: flex-end;
-            padding: clamp(20px, 4vw, 32px);
-            opacity: 0; transition: opacity 0.4s ease;
-        }
-
-        .project-card:hover .project-overlay { opacity: 1; }
-        .project-card:hover .project-img { transform: scale(1.08); }
-
-        .project-overlay span {
-            color: var(--accent);
-            font-size: 12px; font-weight: 600;
-            letter-spacing: 2px; text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .project-overlay h3 {
-            color: var(--white);
-            font-size: clamp(18px, 3vw, 22px);
-            font-weight: 700; margin-bottom: 6px;
-        }
-
-        .project-overlay p {
-            color: rgba(255,255,255,0.7);
-            font-size: 14px;
-        }
-
-        /* ========== TESTIMONIALS ========== */
-        .testimonials-grid {
-            max-width: 1200px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 28px;
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            border-radius: 16px;
-            padding: clamp(30px, 5vw, 42px) clamp(26px, 4vw, 36px);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .testimonial-quote {
-            font-size: 48px; color: var(--accent);
-            font-family: 'Playfair Display', serif;
-            line-height: 1; margin-bottom: 8px;
-            opacity: 0.4;
-        }
-
-        .testimonial-text {
-            font-size: 15px; color: var(--text-light);
-            line-height: 1.8; margin-bottom: 22px;
-            font-style: italic;
-        }
-
-        .testimonial-stars {
-            color: var(--accent); font-size: 14px;
-            margin-bottom: 18px; display: flex; gap: 3px;
-        }
-
-        .testimonial-author {
-            display: flex; align-items: center; gap: 14px;
-        }
-
-        .testimonial-avatar {
-            width: 48px; height: 48px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-light);
-            background: var(--light-gray);
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 600; color: var(--accent);
-            font-size: 16px;
-        }
-
-        .testimonial-name {
-            font-weight: 700; color: var(--primary);
-            font-size: 16px;
-        }
-
-        .testimonial-role {
-            font-size: 13px; color: var(--text-light);
-        }
-
-        /* ========== CONTACT ========== */
-        .contact-grid {
-            max-width: 1300px; margin: 0 auto;
-            display: grid; grid-template-columns: 1fr 1.1fr;
-            gap: clamp(40px, 6vw, 60px);
-            align-items: start;
-        }
-
-        .contact-info {
-            padding: clamp(35px, 6vw, 50px) clamp(28px, 5vw, 42px);
-            background: var(--primary);
-            border-radius: 16px;
-            color: var(--white);
-        }
-
-        .contact-info h3 {
-            font-size: clamp(24px, 4vw, 30px);
-            font-weight: 700; margin-bottom: 14px;
-        }
-
-        .contact-info > p {
-            color: rgba(255,255,255,0.65);
-            font-size: 15px; line-height: 1.7;
-            margin-bottom: 35px;
-        }
-
-        .contact-detail {
-            display: flex; align-items: flex-start; gap: 16px;
-            margin-bottom: 26px;
-        }
-
-        .contact-detail-icon {
-            width: 46px; height: 46px;
-            background: rgba(200, 164, 90, 0.15);
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .contact-detail-icon i {
-            color: var(--accent); font-size: 17px;
-        }
-
-        .contact-detail h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 13px; font-weight: 600;
-            color: var(--accent); margin-bottom: 4px;
-            letter-spacing: 0.8px; text-transform: uppercase;
-        }
-
-        .contact-detail p, .contact-detail a {
-            color: rgba(255,255,255,0.75);
-            font-size: 15px; text-decoration: none;
-            line-height: 1.6;
-        }
-
-        .contact-detail a:hover { color: var(--accent); }
-
-        .contact-socials {
-            display: flex; gap: 12px; margin-top: 35px;
-        }
-
-        .contact-socials a {
-            width: 42px; height: 42px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--white); font-size: 16px;
-            transition: var(--transition);
-        }
-
-        .contact-socials a:hover {
-            background: var(--accent);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .contact-form {
-            background: var(--white);
-            border-radius: 16px;
-            padding: clamp(35px, 6vw, 50px) clamp(28px, 5vw, 42px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .contact-form h3 {
-            font-size: clamp(24px, 4vw, 28px);
-            font-weight: 700; color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .contact-form > p {
-            color: var(--text-light);
-            font-size: 15px; margin-bottom: 28px;
-        }
-
-        .form-row {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 18px; margin-bottom: 18px;
-        }
-
-        .form-group { margin-bottom: 18px; }
-
-        .form-group label {
-            display: block;
-            font-size: 13px; font-weight: 600;
-            color: var(--text); margin-bottom: 8px;
-            letter-spacing: 0.5px; text-transform: uppercase;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 14px 18px;
-            border: 1.5px solid var(--light-gray);
-            border-radius: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 15px; color: var(--text);
-            transition: border-color 0.3s;
-            background: var(--off-white);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: var(--white);
-        }
-
-        .form-group textarea {
-            height: 130px; resize: vertical;
-        }
-
-        .form-submit {
-            width: 100%;
-            background: var(--accent);
-            color: var(--primary);
-            padding: 17px;
-            border: none; border-radius: 10px;
-            font-weight: 700; font-size: 15px;
-            letter-spacing: 0.8px;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: var(--transition);
-            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-        }
-
-        .form-submit:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(200, 164, 90, 0.35);
-        }
-
-        /* ========== FOOTER ========== */
-        .footer {
-            background: var(--primary-dark);
-            padding: clamp(60px, 10vw, 90px) 5% 30px;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .footer-grid {
-            max-width: 1400px; margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: clamp(35px, 6vw, 50px);
-            padding-bottom: clamp(30px, 5vw, 50px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-about .nav-logo { margin-bottom: 18px; }
-
-        .footer-about p {
-            font-size: 14px; line-height: 1.8;
-            margin-bottom: 22px;
-        }
-
-        .footer h4 {
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 16px; font-weight: 700;
-            margin-bottom: 22px; letter-spacing: 0.3px;
-        }
-
-        .footer-links { display: flex; flex-direction: column; gap: 11px; }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.6);
-            font-size: 14px; transition: var(--transition);
-            display: inline-flex; align-items: center; gap: 8px;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent); padding-left: 4px;
-        }
-
-        .footer-contact-item {
-            display: flex; align-items: flex-start; gap: 12px;
-            margin-bottom: 14px;
-        }
-
-        .footer-contact-item i {
-            color: var(--accent); font-size: 14px;
-            margin-top: 3px; flex-shrink: 0;
-        }
-
-        .footer-contact-item p, .footer-contact-item a {
-            color: rgba(255,255,255,0.6);
-            font-size: 14px; text-decoration: none;
-            line-height: 1.6;
-        }
-
-        .footer-bottom {
-            max-width: 1400px; margin: 0 auto;
-            padding-top: clamp(24px, 4vw, 32px);
-            display: flex; align-items: center; justify-content: space-between;
-            flex-wrap: wrap; gap: 12px;
-        }
-
-        .footer-bottom p {
-            color: rgba(255,255,255,0.4);
-            font-size: 13px;
-        }
-
-        .footer-bottom p span { color: var(--accent); }
-
-        /* ========== ANIMATIONS ========== */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(35px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-18px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-12px); }
-            60% { transform: translateX(-50%) translateY(-6px); }
-        }
-
-        .reveal {
-            opacity: 0; transform: translateY(35px);
-            transition: all 0.7s ease;
-        }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* ========== MOBILE NAV ========== */
-        .mobile-nav {
-            position: fixed; top: 0; right: -100%;
-            width: 100%; height: 100vh;
-            background: var(--primary);
-            z-index: 999;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            gap: 28px; transition: right 0.4s ease;
-            padding: 20px;
-        }
-
-        .mobile-nav.active { right: 0; }
-
-        .mobile-nav a {
-            color: var(--white); text-decoration: none;
-            font-size: clamp(20px, 4vw, 26px);
-            font-family: 'Playfair Display', serif;
-            font-weight: 600; transition: color 0.3s;
-        }
-
-        .mobile-nav a:hover { color: var(--accent); }
-
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 1024px) {
-            .navbar { padding: 16px 4%; }
-            .navbar.scrolled { padding: 12px 4%; }
-            .nav-links { display: none; }
-            .nav-phone { display: none; }
-            .hamburger { display: flex; }
-
-            .about-grid { grid-template-columns: 1fr; }
-            .about-img-small { bottom: -20px; right: 20px; }
-
-            .contact-grid { grid-template-columns: 1fr; }
-
-            .footer-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-bottom { flex-direction: column; text-align: center; }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 42px; }
-            .hero-subtitle { font-size: 17px; }
-            .hero-buttons { flex-direction: column; align-items: center; }
-            .btn-primary, .btn-secondary { width: 100%; max-width: 320px; }
-
-            .section { padding: clamp(70px, 12vw, 100px) 4%; }
-
-            .about-features { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-
-            .projects-grid { grid-template-columns: repeat(2, 1fr); }
-
-            .footer-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 36px; }
-            .hero-tagline { font-size: 18px; }
-            .section-header h2 { font-size: 28px; }
-
-            .services-grid, .why-us-grid, .testimonials-grid, .projects-grid {
-                grid-template-columns: 1fr;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>64 Tribes Youth Union | Unity, Peace, and Youth Empowerment in South Sudan</title>
+    <meta name="description" content="64 Tribes Youth Union (64TYU) is a youth-led non-profit organization in Juba, South Sudan, uniting young people from all 64 tribes for peace, leadership, and national development.">
+    <meta name="keywords" content="64 Tribes Youth Union, 64TYU, South Sudan youth, peacebuilding, youth leadership, Juba, unity, 64 tribes">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['"Playfair Display"', 'Georgia', 'serif'],
+                        'body': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'navy': '#06283D',
+                        'navy-light': '#0a3d5c',
+                        'forest': '#1B5E45',
+                        'forest-light': '#247a5a',
+                        'gold': '#D4A017',
+                        'gold-light': '#e8b830',
+                        'cream': '#fdfaf3',
+                    }
+                }
             }
-
-            .about-images { order: -1; }
-            .about-experience-badge { top: 15px; left: 15px; }
-
-            .nav-logo-text { font-size: 20px; }
-            .nav-logo-icon { width: 42px; height: 42px; font-size: 16px; }
         }
+    </script>
+    <style>
+        :root { --navy: #06283D; --forest: #1B5E45; --gold: #D4A017; }
+        * { scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; background-color: #ffffff; overflow-x: hidden; }
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+
+        .card-hover { transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s ease; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 30px 50px -12px rgba(6,40,61,0.2); }
+
+        .overlay-hero { background: linear-gradient(135deg, rgba(6,40,61,0.55) 0%, rgba(6,40,61,0.35) 30%, rgba(27,94,69,0.15) 60%, rgba(6,40,61,0.25) 100%); }
+        .overlay-impact { background: rgba(6,40,61,0.45); }
+
+        .dropdown-menu { opacity: 0; transform: translateY(12px); pointer-events: none; transition: 0.3s ease; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
+        .dropdown-trigger:hover .dropdown-menu, .dropdown-menu.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+        @keyframes bounceDown { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+        .scroll-indicator { animation: bounceDown 2s infinite; }
+
+        @keyframes floatGentle { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .float-gentle { animation: floatGentle 5s infinite; }
+        .float-gentle-delay { animation: floatGentle 5s 2.5s infinite; }
+
+        @keyframes pulseGold { 0%,100% { box-shadow: 0 0 0 0 rgba(212,160,23,0.6); } 50% { box-shadow: 0 0 0 15px rgba(212,160,23,0); } }
+        .pulse-gold { animation: pulseGold 2.5s infinite; }
+
+        .mobile-menu { transform: translateX(100%); transition: 0.4s cubic-bezier(0.23,1,0.32,1); }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-dropdown-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .mobile-dropdown-menu.open { max-height: 500px; }
+        .mobile-dropdown-btn i { transition: transform 0.3s; }
+        .mobile-dropdown-btn.open i { transform: rotate(180deg); }
+
+        /* Premium logo image container */
+.logo-image-container {
+    width: 44px;               /* matches the original icon size */
+    height: 44px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* The image itself – ensures it fits perfectly */
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;         /* or contain if you prefer no cropping */
+    display: block;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect – subtle lift and glow */
+.logo-image-container:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(212, 160, 23, 0.3);
+    border-color: rgba(212, 160, 23, 0.4);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+        .partner-carousel-wrapper { overflow: hidden; mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); }
+        .partner-carousel-track { display: flex; width: max-content; animation: infiniteScroll 35s linear infinite; }
+        .partner-carousel-track:hover { animation-play-state: paused; }
+        @keyframes infiniteScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.23,1,0.32,1), transform 0.8s cubic-bezier(0.23,1,0.32,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .img-reveal { clip-path: inset(0 100% 0 0); transition: clip-path 1.2s cubic-bezier(0.23,1,0.32,1); }
+        .img-reveal.visible { clip-path: inset(0 0% 0 0); }
+
+        @media (max-width: 767px) {
+            .img-reveal { clip-path: inset(0 0% 0 0) !important; opacity: 1 !important; transform: none !important; }
+        }
+
+        .glass { background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.4); }
+        .glass-dark { background: rgba(6,40,61,0.75); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+        .support-btn { background: linear-gradient(135deg, #D4A017, #e8b830); color: #06283D; font-weight: 700; }
+        .support-btn:hover { background: linear-gradient(135deg, #e8b830, #D4A017); transform: translateY(-1px); box-shadow: 0 10px 20px rgba(212,160,23,0.4); }
+
+        .gallery-img { transition: transform 0.3s ease; }
+        .gallery-img:hover { transform: scale(1.03); }
     </style>
 </head>
-<body>
+<body class="text-gray-800 bg-white">
 
-    <!-- NAVBAR -->
-    <nav class="navbar" id="navbar">
-        <a href="#home" class="nav-logo">
-            <div class="nav-logo-icon">JMD</div>
-            <div class="nav-logo-text">JMD <span>Builders</span></div>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="nav-right">
-            <a href="tel:+211912345678" class="nav-phone">
-                <i class="fas fa-phone"></i>
-                +211 980 659 001
-            </a>
-            <a href="#contact" class="nav-quote-btn">
-                <i class="fas fa-file-alt"></i> Get Quote
-            </a>
-            <div class="hamburger" id="hamburger">
-                <span></span><span></span><span></span>
+    <!-- Top Bar -->
+    <div class="hidden lg:block bg-navy text-white/85 text-xs py-2.5 px-6 z-50 relative">
+        <div class="max-w-7xl mx-auto flex justify-between">
+            <div class="flex items-center gap-6">
+                <a href="tel:+211917724817" class="hover:text-gold flex items-center gap-2"><i class="fa-solid fa-phone text-[10px] text-gold"></i> +211 917 724 817</a>
+                <span class="text-white/25">|</span>
+                <a href="mailto:info@64tribesyouthunion.org" class="hover:text-gold flex items-center gap-2"><i class="fa-solid fa-envelope text-[10px] text-gold"></i> info@64tribesyouthunion.org</a>
+            </div>
+            <div class="flex items-center gap-5">
+                <a href="#volunteer" class="hover:text-gold">Volunteer</a>
+                <a href="#contact" class="hover:text-gold">Contact</a>
+                <a href="#donate" class="bg-gold text-navy font-semibold px-5 py-2 rounded-full pulse-gold">Donate Now <i class="fa-solid fa-heart ml-1.5"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav id="mainNav" class="fixed top-0 lg:top-[37px] w-full z-40 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between py-4">
+                <a href="#" class="flex items-center gap-3 z-50">
+    <div class="logo-image-container">
+        <img src="assets/64youthlogo.jpg" alt="64 Tribes Youth Union Logo" class="logo-image" />
+    </div>
+    <div class="hidden sm:block">
+        <span class="font-display font-semibold text-white text-lg leading-tight block">64 Tribes Youth</span>
+        <span class="text-white/70 text-[10px] tracking-widest uppercase">Union</span>
+    </div>
+</a>
+                <div class="hidden lg:flex items-center gap-1">
+                    <a href="#" class="text-white/90 hover:text-gold px-3 py-2 text-sm font-medium">Home</a>
+                    <div class="dropdown-trigger relative">
+                        <button class="text-white/90 hover:text-gold px-3 py-2 text-sm font-medium flex items-center gap-1">About <i class="fa-solid fa-chevron-down text-[9px]"></i></button>
+                        <div class="dropdown-menu absolute top-full left-0 mt-1 bg-white rounded-xl py-2 min-w-[200px] border">
+                            <a href="#about" class="block px-4 py-2.5 text-sm hover:bg-cream">Our Story</a>
+                            <a href="#about" class="block px-4 py-2.5 text-sm hover:bg-cream">Mission & Vision</a>
+                            <a href="#about" class="block px-4 py-2.5 text-sm hover:bg-cream">Values</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-trigger relative">
+                        <button class="text-white/90 hover:text-gold px-3 py-2 text-sm font-medium flex items-center gap-1">Programs <i class="fa-solid fa-chevron-down text-[9px]"></i></button>
+                        <div class="dropdown-menu absolute top-full left-0 mt-1 bg-white rounded-xl py-2 min-w-[220px] border">
+                            <a href="#programs" class="block px-4 py-2.5 text-sm hover:bg-cream">All Programs</a>
+                            <a href="#peacebuilding" class="block px-4 py-2.5 text-sm hover:bg-cream">Peacebuilding</a>
+                            <a href="#leadership" class="block px-4 py-2.5 text-sm hover:bg-cream">Youth Leadership</a>
+                            <a href="#programs" class="block px-4 py-2.5 text-sm hover:bg-cream">Community Development</a>
+                            <a href="#programs" class="block px-4 py-2.5 text-sm hover:bg-cream">Civic Engagement</a>
+                            <a href="#programs" class="block px-4 py-2.5 text-sm hover:bg-cream">Advocacy</a>
+                            <a href="#programs" class="block px-4 py-2.5 text-sm hover:bg-cream">Capacity Building</a>
+                        </div>
+                    </div>
+                    <a href="#peacebuilding" class="text-white/90 hover:text-gold px-3 py-2 text-sm font-medium">Peacebuilding</a>
+                    <a href="#leadership" class="text-white/90 hover:text-gold px-3 py-2 text-sm font-medium">Leadership</a>
+                    <a href="#news" class="text-white/90 hover:text-gold px-3 py-2 text-sm font-medium">News & Updates</a>
+                    <a href="#gallery" class="text-white/90 hover:text-gold px-3 py-2 text-sm font-medium">Gallery</a>
+                    <a href="#partners" class="text-white/90 hover:text-gold px-3 py-2 text-sm font-medium">Partners</a>
+                    <a href="#contact" class="text-white/90 hover:text-gold px-3 py-2 text-sm font-medium">Contact</a>
+                </div>
+                <div class="hidden lg:block">
+                    <a href="#volunteer" class="support-btn px-6 py-2.5 rounded-full text-sm shadow-lg transition-all duration-300">Volunteer <i class="fa-solid fa-hand-holding-heart ml-1.5 text-xs"></i></a>
+                </div>
+                <button id="mobileMenuBtn" class="lg:hidden z-50 text-white p-2"><i class="fa-solid fa-bars text-2xl"></i></button>
             </div>
         </div>
     </nav>
 
-    <!-- MOBILE NAV -->
-    <div class="mobile-nav" id="mobileNav">
-        <a href="#home" onclick="closeMobile()">Home</a>
-        <a href="#about" onclick="closeMobile()">About</a>
-        <a href="#services" onclick="closeMobile()">Services</a>
-        <a href="#projects" onclick="closeMobile()">Projects</a>
-        <a href="#contact" onclick="closeMobile()">Contact</a>
-        <a href="tel:+211912345678" style="color: var(--accent); font-size: 20px;">
-            <i class="fas fa-phone"></i> +211 980 659 001
-        </a>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-40 bg-navy/98 backdrop-blur-xl flex flex-col pt-24 px-8 lg:hidden">
+        <div class="flex flex-col gap-1 overflow-y-auto max-h-[80vh]">
+            <a href="#" class="text-white text-lg py-3 border-b border-white/10 font-medium">Home</a>
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn w-full flex items-center justify-between text-white text-lg py-3 border-b border-white/10 font-medium" onclick="toggleMobileDropdown(this)">About <i class="fa-solid fa-chevron-down text-xs"></i></button>
+                <div class="mobile-dropdown-menu pl-4 space-y-1">
+                    <a href="#about" class="block text-white/70 text-base py-2">Our Story</a>
+                    <a href="#about" class="block text-white/70 text-base py-2">Mission & Vision</a>
+                    <a href="#about" class="block text-white/70 text-base py-2">Values</a>
+                </div>
+            </div>
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn w-full flex items-center justify-between text-white text-lg py-3 border-b border-white/10 font-medium" onclick="toggleMobileDropdown(this)">Programs <i class="fa-solid fa-chevron-down text-xs"></i></button>
+                <div class="mobile-dropdown-menu pl-4 space-y-1">
+                    <a href="#programs" class="block text-white/70 text-base py-2">All Programs</a>
+                    <a href="#peacebuilding" class="block text-white/70 text-base py-2">Peacebuilding</a>
+                    <a href="#leadership" class="block text-white/70 text-base py-2">Youth Leadership</a>
+                    <a href="#programs" class="block text-white/70 text-base py-2">Community Development</a>
+                    <a href="#programs" class="block text-white/70 text-base py-2">Civic Engagement</a>
+                    <a href="#programs" class="block text-white/70 text-base py-2">Advocacy</a>
+                    <a href="#programs" class="block text-white/70 text-base py-2">Capacity Building</a>
+                </div>
+            </div>
+            <a href="#peacebuilding" class="text-white text-lg py-3 border-b border-white/10 font-medium">Peacebuilding</a>
+            <a href="#leadership" class="text-white text-lg py-3 border-b border-white/10 font-medium">Leadership</a>
+            <a href="#news" class="text-white text-lg py-3 border-b border-white/10 font-medium">News & Updates</a>
+            <a href="#gallery" class="text-white text-lg py-3 border-b border-white/10 font-medium">Gallery</a>
+            <a href="#partners" class="text-white text-lg py-3 border-b border-white/10 font-medium">Partners</a>
+            <a href="#contact" class="text-white text-lg py-3 border-b border-white/10 font-medium">Contact</a>
+            <a href="#volunteer" class="support-btn px-6 py-3 rounded-full text-center mt-6 text-lg shadow-lg">Volunteer <i class="fa-solid fa-hand-holding-heart ml-1.5"></i></a>
+        </div>
     </div>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-award"></i>
-                <span>Trusted Construction in South Sudan</span>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center overflow-hidden bg-navy">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80" alt="Youth in South Sudan" class="w-full h-full object-cover filter brightness-90">
+            <div class="absolute inset-0 overlay-hero"></div>
+        </div>
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-28 lg:pt-20 pb-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="reveal"><span class="inline-block text-gold text-xs lg:text-sm tracking-[0.25em] uppercase font-semibold border border-gold/40 rounded-full px-4 py-1.5">Youth-Led | Non-Profit | Juba, South Sudan</span></div>
+                    <h1 class="reveal reveal-delay-1 font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.08]" style="text-shadow:0 6px 24px rgba(0,0,0,0.5);">
+                        Uniting Youth.<br>Building Peace.<br>
+                        <span class="text-gold italic font-medium">Empowering 64 Tribes.</span>
+                    </h1>
+                    <p class="reveal reveal-delay-2 text-white/90 text-base sm:text-lg max-w-lg leading-relaxed font-light" style="text-shadow:0 2px 12px rgba(0,0,0,0.4);">
+                        64 Tribes Youth Union brings together young people from every tribe in South Sudan to promote unity, leadership, and sustainable national development.
+                    </p>
+                    <div class="reveal reveal-delay-3 flex flex-wrap gap-4">
+                        <a href="#about" class="bg-gold text-navy font-semibold px-8 py-3.5 rounded-full text-sm lg:text-base hover:bg-gold-light shadow-xl inline-flex items-center gap-2">Discover Our Work <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                        <a href="#volunteer" class="border-2 border-white/50 text-white font-semibold px-8 py-3.5 rounded-full text-sm lg:text-base hover:bg-white hover:text-navy inline-flex items-center gap-2">Join Us <i class="fa-solid fa-hand-holding-heart text-xs"></i></a>
+                    </div>
+                </div>
+                <div class="reveal reveal-delay-4 hidden lg:flex flex-col gap-6 items-end">
+                    <div class="float-gentle bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20"><div class="text-gold text-3xl font-display font-bold">500+</div><div class="text-white/80 text-sm">Youth Engaged</div></div>
+                    <div class="float-gentle-delay bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 ml-8"><div class="text-gold text-3xl font-display font-bold">20+</div><div class="text-white/80 text-sm">Communities</div></div>
+                    <div class="float-gentle bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 ml-4"><div class="text-gold text-3xl font-display font-bold">64</div><div class="text-white/80 text-sm">Tribes United</div></div>
+                </div>
             </div>
-            <h1>Building Dreams,<br>One Brick at a <span>Time</span></h1>
-            <p class="hero-tagline">"Building Dreams, One Brick at a Time"</p>
-            <p class="hero-subtitle">
-                JMD Builders delivers premium construction services in Jebel Suk, Juba, South Sudan. 
-                We specialize in residential, commercial, and infrastructure projects with excellence, 
-                precision, and reliability—transforming your vision into lasting, beautiful structures.
-            </p>
-            <div class="hero-buttons">
-                <a href="tel:+211980659001" class="btn-primary">
-                    <i class="fas fa-phone"></i> Call Us Now
+        </div>
+    </section>
+
+    <!-- Why We Exist -->
+    <section class="py-20 lg:py-28 bg-cream relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10"><div class="absolute top-10 right-10 w-72 h-72 bg-gold rounded-full blur-3xl"></div><div class="absolute bottom-10 left-10 w-96 h-96 bg-forest rounded-full blur-3xl"></div></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 reveal">
+                    <span class="text-gold text-sm tracking-[0.2em] uppercase font-semibold">Our Purpose</span>
+                    <h2 class="font-display text-4xl lg:text-5xl font-bold text-navy leading-tight">Why 64 Tribes Youth Union <span class="text-forest italic">Exists</span></h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">We believe that young people are the key agents of change. By uniting youth from all 64 tribes of South Sudan, we create a platform for peacebuilding, leadership development, and community transformation. Through dialogue, volunteerism, and advocacy, we are building a more inclusive and peaceful future.</p>
+                    <a href="#programs" class="inline-flex items-center gap-2 bg-navy text-white font-semibold px-8 py-3.5 rounded-full hover:bg-navy-light shadow-lg">Explore Our Programs <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                </div>
+                <div class="reveal reveal-delay-2 relative">
+                    <div class="img-reveal rounded-2xl overflow-hidden shadow-2xl"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80" alt="Youth unity" class="w-full h-[400px] lg:h-[500px] object-cover"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="relative reveal">
+                    <div class="img-reveal rounded-2xl overflow-hidden shadow-2xl"><img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&q=80" alt="Youth leaders" class="w-full h-[400px] lg:h-[600px] object-cover"></div>
+                </div>
+                <div class="space-y-8">
+                    <div class="reveal"><span class="text-gold text-sm tracking-[0.2em] uppercase font-semibold">Who We Are</span>
+                        <h2 class="font-display text-4xl lg:text-5xl font-bold text-navy mt-3">United for <span class="text-forest italic">Peace & Unity</span></h2>
+                    </div>
+                    <p class="reveal reveal-delay-1 text-gray-600 text-lg">64 Tribes Youth Union is a youth-led non-profit organization based in Juba, South Sudan. We bring together young people from all 64 tribes to foster peace, develop leadership, and drive community development through inclusive programs and advocacy.</p>
+                    <div class="grid sm:grid-cols-3 gap-4 reveal reveal-delay-2">
+                        <div class="bg-cream rounded-xl p-5"><div class="w-10 h-10 bg-gold/15 rounded-lg flex items-center mb-3"><i class="fa-solid fa-bullseye text-gold"></i></div><h4 class="font-semibold text-navy text-sm">Mission</h4><p class="text-gray-500 text-xs">Empower youth through peacebuilding, leadership, and community engagement.</p></div>
+                        <div class="bg-cream rounded-xl p-5"><div class="w-10 h-10 bg-forest/15 rounded-lg flex items-center mb-3"><i class="fa-solid fa-eye text-forest"></i></div><h4 class="font-semibold text-navy text-sm">Vision</h4><p class="text-gray-500 text-xs">A peaceful, united, and prosperous South Sudan driven by youth.</p></div>
+                        <div class="bg-cream rounded-xl p-5"><div class="w-10 h-10 bg-navy/10 rounded-lg flex items-center mb-3"><i class="fa-solid fa-hand-holding-heart text-navy"></i></div><h4 class="font-semibold text-navy text-sm">Values</h4><p class="text-gray-500 text-xs">Unity, Peace, Leadership, Inclusiveness, Integrity, Diversity.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-20 lg:py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 reveal"><span class="text-gold text-sm tracking-[0.2em] uppercase font-semibold">Focus Areas</span><h2 class="font-display text-4xl lg:text-5xl font-bold text-navy mt-3">Our <span class="text-forest italic">Programs</span></h2></div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div id="peacebuilding" class="card-hover bg-white rounded-2xl overflow-hidden shadow-md reveal"><div class="h-52 bg-gradient-to-br from-blue-900 to-blue-700 relative"><div class="absolute bottom-4 left-4 text-white"><div class="w-9 h-9 bg-gold rounded-lg flex items-center mb-2"><i class="fa-solid fa-dove text-navy"></i></div><h3 class="font-display font-semibold text-lg">Peacebuilding</h3></div></div><div class="p-5"><p class="text-gray-500 text-sm">Promoting peaceful coexistence, dialogue, reconciliation, and conflict resolution among communities.</p></div></div>
+                <div id="leadership" class="card-hover bg-white rounded-2xl overflow-hidden shadow-md reveal reveal-delay-1"><div class="h-52 bg-gradient-to-br from-amber-600 to-gold relative"><div class="absolute bottom-4 left-4 text-white"><div class="w-9 h-9 bg-white rounded-lg flex items-center mb-2"><i class="fa-solid fa-star text-navy"></i></div><h3 class="font-display font-semibold text-lg">Youth Leadership</h3></div></div><div class="p-5"><p class="text-gray-500 text-sm">Developing future leaders through training, mentorship, and hands-on leadership opportunities.</p></div></div>
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md reveal reveal-delay-2"><div class="h-52 bg-gradient-to-br from-teal-700 to-teal-500 relative"><div class="absolute bottom-4 left-4 text-white"><div class="w-9 h-9 bg-gold rounded-lg flex items-center mb-2"><i class="fa-solid fa-people-group text-navy"></i></div><h3 class="font-display font-semibold text-lg">Community Development</h3></div></div><div class="p-5"><p class="text-gray-500 text-sm">Supporting initiatives that improve education, health, livelihoods, and local communities.</p></div></div>
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md reveal"><div class="h-52 bg-gradient-to-br from-purple-800 to-purple-600 relative"><div class="absolute bottom-4 left-4 text-white"><div class="w-9 h-9 bg-gold rounded-lg flex items-center mb-2"><i class="fa-solid fa-landmark text-navy"></i></div><h3 class="font-display font-semibold text-lg">Civic Engagement</h3></div></div><div class="p-5"><p class="text-gray-500 text-sm">Encouraging active youth participation in governance, democracy, and nation-building.</p></div></div>
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md reveal reveal-delay-1"><div class="h-52 bg-gradient-to-br from-red-800 to-red-600 relative"><div class="absolute bottom-4 left-4 text-white"><div class="w-9 h-9 bg-gold rounded-lg flex items-center mb-2"><i class="fa-solid fa-bullhorn text-navy"></i></div><h3 class="font-display font-semibold text-lg">Advocacy</h3></div></div><div class="p-5"><p class="text-gray-500 text-sm">Advocating for youth rights, inclusion, gender equality, and equal opportunities.</p></div></div>
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md reveal reveal-delay-2"><div class="h-52 bg-gradient-to-br from-forest to-forest-light relative"><div class="absolute bottom-4 left-4 text-white"><div class="w-9 h-9 bg-gold rounded-lg flex items-center mb-2"><i class="fa-solid fa-graduation-cap text-navy"></i></div><h3 class="font-display font-semibold text-lg">Capacity Building</h3></div></div><div class="p-5"><p class="text-gray-500 text-sm">Providing workshops, training, and skills development programs for young people.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 reveal"><span class="text-gold text-sm tracking-[0.2em] uppercase font-semibold">Moments</span><h2 class="font-display text-4xl lg:text-5xl font-bold text-navy mt-3">Our <span class="text-forest italic">Gallery</span></h2></div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="reveal overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" alt="Youth activity" class="gallery-img w-full h-48 object-cover"></div>
+                
+                <div class="reveal reveal-delay-3 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=400&q=80" alt="Community event" class="gallery-img w-full h-48 object-cover"></div>
+                <div class="reveal overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&q=80" alt="Volunteer work" class="gallery-img w-full h-48 object-cover"></div>
+                <div class="reveal reveal-delay-1 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&q=80" alt="Youth conference" class="gallery-img w-full h-48 object-cover"></div>
+                <div class="reveal reveal-delay-2 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=400&q=80" alt="Reconciliation" class="gallery-img w-full h-48 object-cover"></div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Updates -->
+    <section id="news" class="py-20 lg:py-32 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 reveal"><span class="text-gold text-sm tracking-[0.2em] uppercase font-semibold">Stay Connected</span><h2 class="font-display text-4xl lg:text-5xl font-bold text-navy mt-3">News & <span class="text-forest italic">Updates</span></h2></div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="reveal bg-white rounded-2xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-all">
+                    <div class="flex items-center gap-3 text-gold text-sm mb-3"><i class="fa-regular fa-calendar"></i> July 2026</div>
+                    <h3 class="font-semibold text-navy text-lg mb-2">📰 Youth Peace Conference Held in Juba</h3>
+                    <p class="text-gray-500 text-sm">Over 200 youth from various tribes gathered to discuss peacebuilding strategies and sign a unity declaration.</p>
+                    <a href="#" class="inline-flex items-center gap-1 text-forest font-semibold text-xs mt-4 hover:text-gold">Read More <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                </div>
+                <div class="reveal reveal-delay-1 bg-white rounded-2xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-all">
+                    <div class="flex items-center gap-3 text-gold text-sm mb-3"><i class="fa-regular fa-calendar"></i> June 2026</div>
+                    <h3 class="font-semibold text-navy text-lg mb-2">📰 Leadership Training Graduates 50 Young Leaders</h3>
+                    <p class="text-gray-500 text-sm">The latest cohort completed an intensive program in civic leadership, advocacy, and community development.</p>
+                    <a href="#" class="inline-flex items-center gap-1 text-forest font-semibold text-xs mt-4 hover:text-gold">Read More <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                </div>
+                <div class="reveal reveal-delay-2 bg-white rounded-2xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-all">
+                    <div class="flex items-center gap-3 text-gold text-sm mb-3"><i class="fa-regular fa-calendar"></i> May 2026</div>
+                    <h3 class="font-semibold text-navy text-lg mb-2">📰 Volunteer Outreach Reaches Remote Communities</h3>
+                    <p class="text-gray-500 text-sm">64TYU volunteers provided educational materials and hygiene kits to underserved areas in Central Equatoria.</p>
+                    <a href="#" class="inline-flex items-center gap-1 text-forest font-semibold text-xs mt-4 hover:text-gold">Read More <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer CTA -->
+    <section id="volunteer" class="py-20 lg:py-28 bg-navy relative overflow-hidden">
+        <div class="absolute inset-0 opacity-15"><div class="absolute top-0 right-0 w-96 h-96 bg-gold rounded-full blur-3xl"></div><div class="absolute bottom-0 left-0 w-72 h-72 bg-forest rounded-full blur-3xl"></div></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <div class="reveal">
+                <span class="text-gold text-sm tracking-[0.2em] uppercase font-semibold">Get Involved</span>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mt-3 leading-tight">Become a <span class="text-gold italic">Volunteer</span></h2>
+                <p class="text-white/70 mt-4 max-w-lg mx-auto text-lg leading-relaxed">Join our network of young peace ambassadors. Your time and skills can help unite communities and build a brighter future for South Sudan.</p>
+                <a href="#contact" class="inline-flex items-center gap-2 bg-gold text-navy font-bold px-10 py-4 rounded-full mt-8 hover:bg-gold-light transition-all duration-300 shadow-2xl shadow-gold/30 text-lg pulse-gold">
+                    Sign Up to Volunteer <i class="fa-solid fa-arrow-right text-xs"></i>
                 </a>
-                <a href="#contact" class="btn-secondary">
-                    <i class="fas fa-envelope"></i> Get Free Quote
-                </a>
-            </div>
-        </div>
-        <div class="hero-scroll">
-            <span>Explore</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section section-bg-light" id="about">
-        <div class="about-grid">
-            <div class="about-images reveal">
-                <img src="assets/jmdbuilder.jpg" alt="JMD Builders Team" class="about-img-main">
-                <img src="assets/jmd.jpg" alt="Construction Project" class="about-img-small">
-                <div class="about-experience-badge">
-                    <div class="number">PRO</div>
-                    <div class="text">Experts</div>
-                </div>
-            </div>
-            <div class="about-content reveal">
-                <div class="section-label">About Us</div>
-                <h2>Professional Construction <span>Excellence</span> in Juba</h2>
-                <p class="about-text">
-                    JMD Builders is a professional construction company based in Jebel Suk, Juba, South Sudan, 
-                    dedicated to delivering high-quality building and construction services with excellence, 
-                    precision, and reliability.
-                </p>
-                <p class="about-text">
-                    We specialize in creating strong, modern, and durable structures for residential, commercial, 
-                    and infrastructure projects. Our goal is to transform ideas into reality by building spaces 
-                    that combine functionality, beauty, and long-term value.
-                </p>
-                <div class="about-location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    Jebel Suk, Juba, South Sudan
-                </div>
-                <div class="about-features">
-                    <div class="about-feature"><i class="fas fa-check"></i><span>Professional & Skilled Teams</span></div>
-                    <div class="about-feature"><i class="fas fa-check"></i><span>High-Quality Materials</span></div>
-                    <div class="about-feature"><i class="fas fa-check"></i><span>Timely Project Completion</span></div>
-                    <div class="about-feature"><i class="fas fa-check"></i><span>Customer-Focused Management</span></div>
-                    <div class="about-feature"><i class="fas fa-check"></i><span>Modern Construction Standards</span></div>
-                    <div class="about-feature"><i class="fas fa-check"></i><span>Affordable & Reliable Services</span></div>
-                </div>
-                <a href="#services" class="btn-dark">
-                    Explore Services <i class="fas fa-arrow-right"></i>
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- MISSION & COMMITMENT -->
-    <section class="section">
-        <div class="mission-grid">
-            <div class="mission-card reveal">
-                <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
-                <p>
-                    Our mission is to deliver high-quality construction services that exceed client expectations 
-                    through innovation, skilled workmanship, and reliable project execution.
-                </p>
-                <p style="margin-top: 14px;">
-                    We believe every project is an opportunity to build trust, strengthen communities, 
-                    and create lasting value.
-                </p>
-            </div>
-            <div class="mission-card reveal">
-                <h3><i class="fas fa-handshake"></i> Our Commitment</h3>
-                <p>At JMD Builders, we are focused on:</p>
-                <ul class="mission-list">
-                    <li><i class="fas fa-chevron-right"></i> Excellence in every project</li>
-                    <li><i class="fas fa-chevron-right"></i> Safe and efficient construction practices</li>
-                    <li><i class="fas fa-chevron-right"></i> Long-term client relationships</li>
-                    <li><i class="fas fa-chevron-right"></i> Transparent communication</li>
-                    <li><i class="fas fa-chevron-right"></i> Delivering projects with integrity and precision</li>
-                </ul>
-                <p style="margin-top: 16px; font-style: italic; color: var(--accent);">
-                    We believe in building not just structures—but trust, quality, and lasting partnerships.
-                </p>
+    <!-- Partners Carousel -->
+    <section id="partners" class="py-20 lg:py-32 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 mb-12 text-center reveal"><span class="text-gold text-sm tracking-[0.2em] uppercase font-semibold">Collaboration</span><h2 class="font-display text-4xl lg:text-5xl font-bold text-navy mt-3">Our <span class="text-forest italic">Partners</span></h2></div>
+        <div class="partner-carousel-wrapper reveal">
+            <div class="partner-carousel-track py-4">
+                <div class="min-w-[200px] px-6"><div class="bg-cream rounded-2xl p-6 text-center"><i class="fa-solid fa-globe text-navy text-2xl mb-2"></i><span class="text-sm font-semibold text-navy">UN Youth Envoy</span></div></div>
+                <div class="min-w-[200px] px-6"><div class="bg-cream rounded-2xl p-6 text-center"><i class="fa-solid fa-building-columns text-forest text-2xl mb-2"></i><span class="text-sm font-semibold text-navy">Govt. of South Sudan</span></div></div>
+                <div class="min-w-[200px] px-6"><div class="bg-cream rounded-2xl p-6 text-center"><i class="fa-solid fa-users text-gold text-2xl mb-2"></i><span class="text-sm font-semibold text-navy">Local Chiefs</span></div></div>
+                <div class="min-w-[200px] px-6"><div class="bg-cream rounded-2xl p-6 text-center"><i class="fa-solid fa-hand-holding-heart text-navy text-2xl mb-2"></i><span class="text-sm font-semibold text-navy">Civil Society Network</span></div></div>
+                <div class="min-w-[200px] px-6"><div class="bg-cream rounded-2xl p-6 text-center"><i class="fa-solid fa-seedling text-forest text-2xl mb-2"></i><span class="text-sm font-semibold text-navy">African Youth Fund</span></div></div>
+                <div class="min-w-[200px] px-6"><div class="bg-cream rounded-2xl p-6 text-center"><i class="fa-solid fa-globe text-navy text-2xl mb-2"></i><span class="text-sm font-semibold text-navy">UN Youth Envoy</span></div></div>
+                <div class="min-w-[200px] px-6"><div class="bg-cream rounded-2xl p-6 text-center"><i class="fa-solid fa-building-columns text-forest text-2xl mb-2"></i><span class="text-sm font-semibold text-navy">Govt. of South Sudan</span></div></div>
+                <div class="min-w-[200px] px-6"><div class="bg-cream rounded-2xl p-6 text-center"><i class="fa-solid fa-users text-gold text-2xl mb-2"></i><span class="text-sm font-semibold text-navy">Local Chiefs</span></div></div>
+                <div class="min-w-[200px] px-6"><div class="bg-cream rounded-2xl p-6 text-center"><i class="fa-solid fa-hand-holding-heart text-navy text-2xl mb-2"></i><span class="text-sm font-semibold text-navy">Civil Society Network</span></div></div>
+                <div class="min-w-[200px] px-6"><div class="bg-cream rounded-2xl p-6 text-center"><i class="fa-solid fa-seedling text-forest text-2xl mb-2"></i><span class="text-sm font-semibold text-navy">African Youth Fund</span></div></div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="section section-bg-light" id="services">
-        <div class="section-header reveal">
-            <div class="section-label">Our Services</div>
-            <h2>Comprehensive Construction Solutions</h2>
-            <p>We provide a wide range of professional construction and building services tailored to meet your unique needs across South Sudan.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-home"></i></div>
-                <h3>Residential Building Construction</h3>
-                <p>Custom homes, apartments, and housing developments built with superior craftsmanship, modern design, and attention to every detail that makes a house a home.</p>
-                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-building"></i></div>
-                <h3>Commercial Building Projects</h3>
-                <p>Office complexes, retail spaces, warehouses, and business facilities designed for functionality, efficiency, durability, and lasting commercial value.</p>
-                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-tools"></i></div>
-                <h3>General Construction Services</h3>
-                <p>Full-spectrum construction management from planning to completion, ensuring quality control, safety compliance, and seamless coordination of all project phases.</p>
-                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-paint-roller"></i></div>
-                <h3>Renovation & Remodeling</h3>
-                <p>Transform existing spaces with expert renovation services — kitchen upgrades, bathroom remodels, full home makeovers, and commercial space modernization.</p>
-                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-road"></i></div>
-                <h3>Civil Works & Infrastructure</h3>
-                <p>Roads, bridges, drainage systems, public facilities, and large-scale infrastructure projects executed with precision engineering and strict safety standards.</p>
-                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-border-all"></i></div>
-                <h3>Masonry and Brickwork</h3>
-                <p>Expert bricklaying, stone work, and masonry solutions for walls, facades, foundations, and decorative elements using traditional techniques and modern materials.</p>
-                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-cube"></i></div>
-                <h3>Concrete Works</h3>
-                <p>Professional concrete pouring, finishing, reinforcement, and structural concrete solutions for foundations, slabs, columns, and specialized architectural elements.</p>
-                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-home-lg"></i></div>
-                <h3>Roofing Services</h3>
-                <p>Complete roofing solutions including installation, repair, and maintenance using durable materials suited for South Sudan's climate and architectural styles.</p>
-                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-palette"></i></div>
-                <h3>Interior & Exterior Finishing</h3>
-                <p>Premium finishing services including painting, tiling, flooring, cabinetry, facades, and landscaping to create beautiful, functional, and lasting spaces.</p>
-                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-truck-pickup"></i></div>
-                <h3>Site Preparation & Foundation</h3>
-                <p>Professional land clearing, grading, excavation, and foundation work to ensure a strong, stable base for every construction project we undertake.</p>
-                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- WHY CHOOSE US -->
-    <section class="section section-bg-dark">
-        <div class="section-header reveal">
-            <div class="section-label">Why Choose Us</div>
-            <h2>The JMD Builders Advantage</h2>
-            <p>We don't just build structures — we build lasting relationships through trust, transparency, and exceptional results tailored to South Sudan.</p>
-        </div>
-        <div class="why-us-grid">
-            <div class="why-card reveal">
-                <div class="why-icon"><i class="fas fa-users"></i></div>
-                <h3>Professional Teams</h3>
-                <p>Skilled, experienced, and certified construction professionals dedicated to delivering excellence on every project.</p>
-            </div>
-            <div class="why-card reveal">
-                <div class="why-icon"><i class="fas fa-hard-hat"></i></div>
-                <h3>Durable Solutions</h3>
-                <p>Strong, modern building methods and materials designed to withstand local conditions and stand the test of time.</p>
-            </div>
-            <div class="why-card reveal">
-                <div class="why-icon"><i class="fas fa-medal"></i></div>
-                <h3>Quality Workmanship</h3>
-                <p>High-quality materials and meticulous attention to detail ensure flawless results that exceed expectations.</p>
-            </div>
-            <div class="why-card reveal">
-                <div class="why-icon"><i class="fas fa-clock"></i></div>
-                <h3>On-Time Delivery</h3>
-                <p>Efficient project management and clear timelines ensure your project is completed when promised, every time.</p>
-            </div>
-            <div class="why-card reveal">
-                <div class="why-icon"><i class="fas fa-tag"></i></div>
-                <h3>Affordable Services</h3>
-                <p>Competitive, transparent pricing with no hidden fees — delivering exceptional value without compromising quality.</p>
-            </div>
-            <div class="why-card reveal">
-                <div class="why-icon"><i class="fas fa-user-check"></i></div>
-                <h3>Customer Focus</h3>
-                <p>Your vision guides our work. We prioritize clear communication, collaboration, and your complete satisfaction.</p>
-            </div>
-            <div class="why-card reveal">
-                <div class="why-icon"><i class="fas fa-cogs"></i></div>
-                <h3>Modern Techniques</h3>
-                <p>We employ current construction standards, innovative methods, and quality tools for superior, efficient results.</p>
-            </div>
-            <div class="why-card reveal">
-                <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>Safe Practices</h3>
-                <p>Strict adherence to safety protocols protects our team, your property, and ensures smooth, incident-free project execution.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-        <div class="section-header reveal">
-            <div class="section-label">Our Projects</div>
-            <h2>Featured Work in South Sudan</h2>
-            <p>Explore our portfolio of successfully completed residential, commercial, and infrastructure projects that showcase our commitment to quality and client satisfaction.</p>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card reveal">
-                <img src="assets/jmd.jpg" alt="Commercial Building Juba" class="project-img">
-                <div class="project-overlay">
-                    <span>Commercial</span>
-                    <h3>Juba Business Center</h3>
-                    <p>Modern office complex in central Juba</p>
-                </div>
-            </div>
-            <div class="project-card reveal">
-                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Residential Villa" class="project-img">
-                <div class="project-overlay">
-                    <span>Residential</span>
-                    <h3>Jebel Suk Family Homes</h3>
-                    <p>Custom residential development</p>
-                </div>
-            </div>
-            <div class="project-card reveal">
-                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="Apartment Complex" class="project-img">
-                <div class="project-overlay">
-                    <span>Multi-Family</span>
-                    <h3>Riverside Apartments</h3>
-                    <p>Affordable housing project with modern amenities</p>
-                </div>
-            </div>
-            <div class="project-card reveal">
-                <img src="assets/jmdbuilder.jpg" alt="Renovation Project" class="project-img">
-                <div class="project-overlay">
-                    <span>Renovation</span>
-                    <h3>Historic Building Restoration</h3>
-                    <p>Preserving heritage with modern upgrades</p>
-                </div>
-            </div>
-            <div class="project-card reveal">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Infrastructure Project" class="project-img">
-                <div class="project-overlay">
-                    <span>Infrastructure</span>
-                    <h3>Community Road Development</h3>
-                    <p>Civil works improving local connectivity</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section class="section section-bg-light">
-        <div class="section-header reveal">
-            <div class="section-label">Testimonials</div>
-            <h2>What Our Clients Say</h2>
-            <p>Don't just take our word for it — hear from homeowners, businesses, and community partners across South Sudan who've trusted JMD Builders with their projects.</p>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card reveal">
-                <div class="testimonial-quote">"</div>
-                <div class="testimonial-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">
-                    JMD Builders constructed our family home in Jebel Suk with incredible attention to detail. 
-                    They were professional, on schedule, and the quality of workmanship is outstanding. Highly recommended!
-                </p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">AM</div>
-                    <div>
-                        <div class="testimonial-name">Adok M.</div>
-                        <div class="testimonial-role">Homeowner, Jebel Suk</div>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="space-y-8 reveal">
+                    <span class="text-gold text-sm tracking-[0.2em] uppercase font-semibold">Get In Touch</span>
+                    <h2 class="font-display text-4xl lg:text-5xl font-bold text-navy">Contact <span class="text-forest italic">Us</span></h2>
+                    <div class="space-y-5">
+                        <div class="flex gap-4"><div class="w-11 h-11 bg-gold/15 rounded-xl flex items-center justify-center"><i class="fa-solid fa-location-dot text-gold"></i></div><div><h4 class="font-semibold text-navy">Head Office</h4><p class="text-gray-500">Juba, South Sudan</p></div></div>
+                        <div class="flex gap-4"><div class="w-11 h-11 bg-forest/15 rounded-xl flex items-center justify-center"><i class="fa-solid fa-envelope text-forest"></i></div><div><h4 class="font-semibold text-navy">Email</h4><p class="text-gray-500">info@64tribesyouthunion.org</p></div></div>
+                        <div class="flex gap-4"><div class="w-11 h-11 bg-navy/10 rounded-xl flex items-center justify-center"><i class="fa-solid fa-phone text-navy"></i></div><div><h4 class="font-semibold text-navy">Phone</h4><p class="text-gray-500">+211 917 724 817</p></div></div>
+                        <div class="flex gap-4"><div class="w-11 h-11 bg-gold/15 rounded-xl flex items-center justify-center"><i class="fa-solid fa-globe text-gold"></i></div><div><h4 class="font-semibold text-navy">Website</h4><p class="text-gray-500">64tribesyouthunion.org</p></div></div>
                     </div>
                 </div>
-            </div>
-            <div class="testimonial-card reveal">
-                <div class="testimonial-quote">"</div>
-                <div class="testimonial-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">
-                    We hired JMD Builders for our new retail space in Juba. Their team managed everything from permits to finishing. 
-                    Transparent pricing, excellent communication, and a beautiful result. A true partner.
-                </p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">SK</div>
-                    <div>
-                        <div class="testimonial-name">Sarah K.</div>
-                        <div class="testimonial-role">Business Owner, Juba</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card reveal">
-                <div class="testimonial-quote">"</div>
-                <div class="testimonial-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">
-                    The renovation of our community center was handled with care and expertise. 
-                    JMD Builders respected our budget, timeline, and vision. They built more than a building—they built trust.
-                </p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">JD</div>
-                    <div>
-                        <div class="testimonial-name">James D.</div>
-                        <div class="testimonial-role">Community Leader</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-        <div class="section-header reveal">
-            <div class="section-label">Get In Touch</div>
-            <h2>Let's Build Something Great</h2>
-            <p>Ready to start your project in Juba or across South Sudan? Contact JMD Builders today for a free consultation and detailed quote. We'd love to bring your vision to life.</p>
-        </div>
-        <div class="contact-grid">
-            <div class="contact-info reveal">
-                <h3>Contact Information</h3>
-                <p>Reach out to us through any of these channels. Our team responds within 24 hours to discuss your construction needs.</p>
-                
-                <div class="contact-detail">
-                    <div class="contact-detail-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div>
-                        <h4>Location</h4>
-                        <p>Jebel Suk, Juba<br>South Sudan</p>
-                    </div>
-                </div>
-                
-                <div class="contact-detail">
-                    <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
-                    <div>
-                        <h4>Phone</h4>
-                        <a href="tel:+211912345678">+211 980 659 001</a>
-                    </div>
-                </div>
-                
-                <div class="contact-detail">
-                    <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
-                    <div>
-                        <h4>Email</h4>
-                        <a href="mailto:info@jmdbuilders.com">info@jmdbuilders.com</a>
-                    </div>
-                </div>
-                
-                <div class="contact-detail">
-                    <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
-                    <div>
-                        <h4>Working Hours</h4>
-                        <p>Mon - Sat: 7:00 AM - 6:00 PM<br>Sunday: By Appointment</p>
-                    </div>
-                </div>
-                
-                <div class="contact-socials">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-            
-            <div class="contact-form reveal">
-                <h3>Request a Free Quote</h3>
-                <p>Fill out the form below and our team will contact you with a detailed estimate for your project.</p>
-                <form id="quoteForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Full Name *</label>
-                            <input type="text" placeholder="Your name" required>
+                <div class="reveal reveal-delay-2 bg-cream rounded-2xl p-6 sm:p-8 shadow-lg">
+                    <form class="space-y-5">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Name" class="w-full px-4 py-3 rounded-xl border bg-white">
+                            <input type="email" placeholder="Email" class="w-full px-4 py-3 rounded-xl border bg-white">
                         </div>
-                        <div class="form-group">
-                            <label>Phone Number *</label>
-                            <input type="tel" placeholder="+211 ..." required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address *</label>
-                        <input type="email" placeholder="you@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Service Needed</label>
-                        <select>
-                            <option value="">Select a service...</option>
-                            <option>Residential Construction</option>
-                            <option>Commercial Building</option>
-                            <option>Renovation & Remodeling</option>
-                            <option>Civil Works & Infrastructure</option>
-                            <option>Masonry & Brickwork</option>
-                            <option>Concrete Works</option>
-                            <option>Roofing Services</option>
-                            <option>Interior/Exterior Finishing</option>
-                            <option>Site Preparation</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Project Details</label>
-                        <textarea placeholder="Tell us about your project — location, scope, timeline, budget, and any specific requirements..."></textarea>
-                    </div>
-                    <button type="submit" class="form-submit">
-                        <i class="fas fa-paper-plane"></i> Submit Quote Request
-                    </button>
-                </form>
+                        <textarea rows="4" placeholder="Message" class="w-full px-4 py-3 rounded-xl border bg-white"></textarea>
+                        <button type="submit" class="w-full bg-navy text-white font-semibold py-3.5 rounded-xl hover:bg-navy-light flex items-center justify-center gap-2">Send Message <i class="fa-solid fa-paper-plane text-xs"></i></button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-about">
-                <a href="#home" class="nav-logo">
-                    <div class="nav-logo-icon">JMD</div>
-                    <div class="nav-logo-text">JMD <span>Builders</span></div>
-                </a>
-                <p>
-                    JMD Builders is a premier construction company in Jebel Suk, Juba, South Sudan, 
-                    dedicated to delivering exceptional quality, innovative solutions, and unmatched 
-                    client satisfaction. Building Dreams, One Brick at a Time.
-                </p>
-                <div class="contact-socials">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                </div>
+    <!-- Footer -->
+    <footer class="bg-navy text-white pt-20 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3"><div class="w-11 h-11 bg-gold rounded-lg flex items-center justify-center"><span class="font-display font-bold text-navy text-lg">64</span></div><span class="font-display font-semibold text-xl">64 Tribes Youth Union</span></div>
+                <p class="text-white/55 text-sm max-w-sm">Uniting youth from all 64 tribes of South Sudan for peace, leadership, and sustainable national development.</p>
             </div>
-            <div>
-                <h4>Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Our Services</h4>
-                <ul class="footer-links">
-                    <li><a href="#services">Residential Construction</a></li>
-                    <li><a href="#services">Commercial Building</a></li>
-                    <li><a href="#services">Renovation & Remodeling</a></li>
-                    <li><a href="#services">Civil Works & Infrastructure</a></li>
-                    <li><a href="#services">Masonry & Concrete</a></li>
-                    <li><a href="#services">Roofing & Finishing</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Contact Us</h4>
-                <div class="footer-contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>Jebel Suk, Juba<br>South Sudan</p>
-                </div>
-                <div class="footer-contact-item">
-                    <i class="fas fa-phone"></i>
-                    <a href="tel:+211912345678">+211 980 659 001</a>
-                </div>
-                <div class="footer-contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:info@jmdbuilders.com">info@jmdbuilders.com</a>
-                </div>
-                <div class="footer-contact-item">
-                    <i class="fas fa-clock"></i>
-                    <p>Mon-Sat: 7AM - 6PM</p>
-                </div>
-            </div>
+            <div><h4 class="font-semibold text-white mb-4 text-sm uppercase">Quick Links</h4><ul class="space-y-2.5 text-white/55 text-sm"><li><a href="#" class="hover:text-gold">Home</a></li><li><a href="#about" class="hover:text-gold">About</a></li><li><a href="#programs" class="hover:text-gold">Programs</a></li><li><a href="#gallery" class="hover:text-gold">Gallery</a></li><li><a href="#news" class="hover:text-gold">News & Updates</a></li><li><a href="#volunteer" class="hover:text-gold">Volunteer</a></li></ul></div>
+            <div><h4 class="font-semibold text-white mb-4 text-sm uppercase">Focus Areas</h4><ul class="space-y-2.5 text-white/55 text-sm"><li><a href="#peacebuilding" class="hover:text-gold">Peacebuilding</a></li><li><a href="#leadership" class="hover:text-gold">Youth Leadership</a></li><li><a href="#programs" class="hover:text-gold">Community Development</a></li><li><a href="#programs" class="hover:text-gold">Civic Engagement</a></li><li><a href="#programs" class="hover:text-gold">Advocacy</a></li></ul></div>
+            <div><h4 class="font-semibold text-white mb-4 text-sm uppercase">Contact</h4><ul class="space-y-2.5 text-white/55 text-sm"><li class="flex gap-2"><i class="fa-solid fa-location-dot text-gold mt-0.5"></i> Juba, South Sudan</li><li class="flex gap-2"><i class="fa-solid fa-envelope text-gold mt-0.5"></i> info@64tribesyouthunion.org</li><li class="flex gap-2"><i class="fa-solid fa-phone text-gold mt-0.5"></i> +211 917 724 817</li></ul></div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 <span>JMD Builders</span>. All rights reserved.</p>
-            <p>Building Dreams, One Brick at a Time <i class="fas fa-heart" style="color: var(--accent);"></i></p>
-        </div>
+        <div class="border-t border-white/10 pt-6 text-center text-white/40 text-xs">&copy; 2026 64 Tribes Youth Union. All rights reserved. A youth-led non-profit organization in South Sudan.</div>
     </footer>
 
     <script>
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Hamburger menu
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobileNav');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-        });
-
-        function closeMobile() {
-            hamburger.classList.remove('active');
-            mobileNav.classList.remove('active');
-            document.body.style.overflow = '';
+        function toggleMobileDropdown(button) {
+            const menu = button.nextElementSibling;
+            document.querySelectorAll('.mobile-dropdown-menu.open').forEach(m => { if (m !== menu) m.classList.remove('open'); });
+            document.querySelectorAll('.mobile-dropdown-btn.open').forEach(b => { if (b !== button) b.classList.remove('open'); });
+            menu.classList.toggle('open');
+            button.classList.toggle('open');
         }
 
-        // Close mobile nav when clicking outside
-        mobileNav.addEventListener('click', (e) => {
-            if (e.target === mobileNav) closeMobile();
-        });
+        (function() {
+            const mainNav = document.getElementById('mainNav');
+            function updateNav() {
+                const scrollY = window.scrollY;
+                const isMobile = window.innerWidth < 1024;
+                mainNav.style.top = (scrollY > 80 || isMobile) ? '0' : '37px';
+                mainNav.classList.toggle('glass-dark', scrollY > 80);
+            }
+            window.addEventListener('scroll', updateNav, { passive: true });
+            window.addEventListener('resize', updateNav);
+            updateNav();
 
-        // Scroll reveal animation
-        const reveals = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const icon = mobileMenuBtn.querySelector('i');
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-xmark');
             });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-        reveals.forEach(el => revealObserver.observe(el));
-
-        // Form submission
-        document.getElementById('quoteForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('.form-submit');
-            const originalText = btn.innerHTML;
-            
-            btn.innerHTML = '<i class="fas fa-check"></i> Request Sent!';
-            btn.style.background = '#27ae60';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = '';
-                btn.disabled = false;
-                this.reset();
-                alert('Thank you! Your quote request has been received. We will contact you within 24 hours.');
-            }, 2500);
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offset = 80;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                    if (mobileNav.classList.contains('active')) closeMobile();
-                }
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-xmark');
+                });
             });
-        });
 
-        // Phone number click tracking (optional analytics hook)
-        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-            link.addEventListener('click', () => {
-                console.log('Phone call initiated to JMD Builders');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
+            }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            document.querySelectorAll('.img-reveal').forEach(el => revealObserver.observe(el));
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - mainNav.offsetHeight - 20, behavior: 'smooth' });
+                    }
+                });
             });
-        });
+
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const btn = form.querySelector('button[type="submit"]');
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
+                    btn.classList.add('bg-forest');
+                    setTimeout(() => { btn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane text-xs"></i>'; btn.classList.remove('bg-forest'); form.reset(); }, 2500);
+                });
+            }
+        })();
     </script>
 </body>
 </html>
